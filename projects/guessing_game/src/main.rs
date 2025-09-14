@@ -19,8 +19,10 @@ fn main() { // the "entry point" of the program
             .expect("Failed to read line"); // until semicolon, these are
         // logically same line
 
-        let guess : u32 = guess.trim().parse().expect("Please type a number!"); // v4
-
+        let guess : u32 = match guess.trim().parse() { // "match" added with {} // v4 to v7
+            Ok(num) => num, // if parse can succesfully convert String to integer ... // v7
+            Err(_) => continue, // "_" is "catch-all" // this is the point where things get
+        }; // VERY interesting.
         println!("You guessed : {guess}");
 
         match guess.cmp(&secret_number) { // cmp method, shall compare 2 values ... // v3
