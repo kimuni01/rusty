@@ -7,7 +7,7 @@ fn main() { // the "entry point" of the program
 
     let secret_number = rand::thread_rng().gen_range(1..=100); // v2
 
-    println!("The secret number is : {secret_number}"); // v2
+    // println!("The secret number is : {secret_number}"); // v8 is the last // v2 to v8
 
     loop { // v5
         println!("Please input your guess."); // println! is not a function
