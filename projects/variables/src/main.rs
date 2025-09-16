@@ -4,7 +4,7 @@ fn main() {
     // x = 6;
     // println!("The value of x is : {x}"); // .v1
 
-    
+
     // const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3; // constant variable example
 
     let x = 5; // v3
@@ -17,4 +17,12 @@ fn main() {
     }
 
     println!("The value of x is : {x}"); // .v3
+
+
+    // let spaces = "    "; // v4
+    // let spaces = spaces.len(); // .v4
+
+    let mut spaces = "    "; // v5
+    spaces = spaces.len(); // .v5
+
 }
