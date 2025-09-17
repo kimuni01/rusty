@@ -52,5 +52,12 @@ fn main() {
 
     let c = 'z'; // v9
     let z : char = 'ㅋ'; // explicit type annotation // .v9
-    
+
+
+    let tup : (i32, f64, u8) = (500, 6.4, 1); // not obliged to state the types // v10
+
+    let tup = (500, 6.4, 1); // v11
+    let (x, y, z) = tup; // this is called 'destructuring'
+    println!("The value of y is : {y}"); // .v11
+
 }
