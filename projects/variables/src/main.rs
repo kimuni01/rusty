@@ -26,7 +26,23 @@ fn main() {
     // spaces = spaces.len(); // .v5
 
 
-    let x = 2.0; // f64 // .v6
-    let y : f32 = 3.0; // f32
+    // let x = 2.0; // f64 // .v6
+    // let y : f32 = 3.0; // f32
+
+    // add
+    let sum = 5 + 10;
+
+    // subtract
+    let difference = 95.5 - 4.3;
+
+    // multiply
+    let product = 4 * 30;
+
+    // divide
+    let quotient = 56.7 / 32.2;
+    let truncated = -5 / 3; // result is -1.
+
+    // remainder
+    let remainder = 43 % 5;
 
 }
