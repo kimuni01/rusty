@@ -45,4 +45,12 @@ fn main() {
     // remainder
     let remainder = 43 % 5;
 
+    
+    let t = true; // v8
+    let f : bool = false; // explicit type annotation // .v8
+
+
+    let c = 'z'; // v9
+    let z : char = 'ㅋ'; // explicit type annotation // .v9
+    
 }
