@@ -39,25 +39,43 @@ fn main() {
     let product = 4 * 30;
 
     // divide
-    let quotient = 56.7 / 32.2;
-    let truncated = -5 / 3; // result is -1.
+    // let quotient = 56.7 / 32.2;
+    // let truncated = -5 / 3; // result is -1.
 
     // remainder
-    let remainder = 43 % 5;
+    // let remainder = 43 % 5; // .v7
 
     
-    let t = true; // v8
-    let f : bool = false; // explicit type annotation // .v8
+    // let t = true; // v8
+    // let f : bool = false; // explicit type annotation // .v8
 
 
-    let c = 'z'; // v9
-    let z : char = 'ㅋ'; // explicit type annotation // .v9
+    // let c = 'z'; // v9
+    // let z : char = 'ㅋ'; // explicit type annotation // .v9
 
 
-    let tup : (i32, f64, u8) = (500, 6.4, 1); // not obliged to state the types // v10
+    // let tup : (i32, f64, u8) = (500, 6.4, 1); // not obliged to state the types // v10
 
-    let tup = (500, 6.4, 1); // v11
-    let (x, y, z) = tup; // this is called 'destructuring'
-    println!("The value of y is : {y}"); // .v11
+    // let tup = (500, 6.4, 1); // v11
+    // let (x, y, z) = tup; // this is called 'destructuring'
+    // println!("The value of y is : {y}"); // .v11
+
+
+    // let x : (i32, f64, u8) = (500, 6.4, 1); // v12
+    // let five_hundred = x.0; // different ways of accessing tuple elements
+    // let six_point_four = x.1;
+    // let one = x.2; // .v12
+
+    //  unlike some other languages, Rust arrays have fixed length
+    // let a = [1, 2, 3, 4, 5]; // v13
+    // let months = ["January", "February", "March", "April", "May", "June",
+    // "July", "August", "September", "October", "November", "December"];
+    // let a : [i32; 5] = [1, 2, 3, 4, 5];
+    // let a = [3; 5]; // equals [3, 3, 3, 3, 3]; // .v13
+
+
+    let a = [1, 2, 3, 4, 5]; // v14
+    let first = a[0];
+    let second = a[1]; // .v14
 
 }
