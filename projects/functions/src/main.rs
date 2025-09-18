@@ -14,11 +14,11 @@ fn main() {
     // println!("The value of y is : {y}"); // .v5
 
     // let x = five(); // v6
-    // println!("The value of x is : {x}"); //.v6
+    // println!("The value of x is : {x}"); // .v6
 
     let x = plus_one(5); // v7
     println!("The value of x is : {x}");
-}
+} // .7
 
 // fn another_function(x: i32) { // rust does not care the location of functions. // .v2
 //     println!("The value of x is : {x}"); // .v1 to .v2
