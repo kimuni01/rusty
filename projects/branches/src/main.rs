@@ -33,4 +33,9 @@ fn main() {
     let number = if condition {5} else {6};
 
     println!("The value of number is : {number}"); // .v4
+
+
+    // let condition = true; // v5
+    // let number = if condition {5} else {"six"}; // if for assigning a value has to have
+    // println!("The value of number is : {number}"); // same types for both true and false .v5
 }
