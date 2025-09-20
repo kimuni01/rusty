@@ -46,10 +46,22 @@ fn main() {
     // println!("LIFTOFF!!!"); // .v4
 
 
-    let a = [10, 20, 30, 40, 50]; // v5
-    let mut index = 0;
-    while index < 5 {
-        println!("the value is : {}", a[index]); // new way of println introduced
-        index += 1;
-    } // .v5
+    // let a = [10, 20, 30, 40, 50]; // v5
+    // let mut index = 0;
+    // while index < 5 {
+    //     println!("the value is : {}", a[index]); // new way of println introduced
+    //     index += 1;
+    // }  // this way makes compiler check if index is out of array for every iteration .v5
+
+
+    // let a = [10, 20, 30, 40, 50]; // hence v5 is slowed down during compile time // v6
+    // for element in a { // this is a much simpler alternative
+    //     println!("the value is : {element}");
+    // } // .v6
+
+
+    for number in (1..4).rev() { // most Rustaceans use 'for' for loops v7
+        println!("{number}!"); // .rev() keyword makes range in reverse order
+    }
+    println!("LIFTOFF!!!"); // .v7
 }
