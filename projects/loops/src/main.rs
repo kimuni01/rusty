@@ -37,11 +37,19 @@ fn main() {
     // println!("End count = {count}"); // .v3
 
 
-    let mut number = 3; // v4
-    while number != 0 { // shortens the code made of loops
-        println!("{number}"); // no break, no if, no else
+    // let mut number = 3; // v4
+    // while number != 0 { // shortens the code made of loop(s)
+    //     println!("{number}"); // no break, no if, no else
 
-        number -= 1;
-    }
-    println!("LIFTOFF!!!"); // .v4
+    //     number -= 1;
+    // }
+    // println!("LIFTOFF!!!"); // .v4
+
+
+    let a = [10, 20, 30, 40, 50]; // v5
+    let mut index = 0;
+    while index < 5 {
+        println!("the value is : {}", a[index]); // new way of println introduced
+        index += 1;
+    } // .v5
 }
