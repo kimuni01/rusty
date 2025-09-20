@@ -16,23 +16,32 @@ fn main() {
     // println!("The result is {result}"); // .v2
 
 
-    let mut count = 0; // v3
-    'counting_up : loop { // loop with a label, for a 'break'
-        println!("count = {count}");
-        let mut remaining = 10;
+    // let mut count = 0; // v3
+    // 'counting_up : loop { // loop with a label, for a 'break'
+    //     println!("count = {count}");
+    //     let mut remaining = 10;
 
-        loop {
-            println!("remaining = {remaining}");
-            if remaining == 9 {
-                break;
-            }
-            if count == 2 {
-                break 'counting_up; // escapes the outer 'loop'
-            }
-            remaining -= 1;
-        }
+        // loop {
+        //     println!("remaining = {remaining}");
+        //     if remaining == 9 {
+        //         break;
+        //     }
+        //     if count == 2 {
+        //         break 'counting_up; // escapes the outer 'loop'
+        //     }
+        //     remaining -= 1;
+        // }
 
-        count += 1;
+    //     count += 1;
+    // }
+    // println!("End count = {count}"); // .v3
+
+
+    let mut number = 3; // v4
+    while number != 0 { // shortens the code made of loops
+        println!("{number}"); // no break, no if, no else
+
+        number -= 1;
     }
-    println!("End count = {count}"); // .v3
+    println!("LIFTOFF!!!"); // .v4
 }
