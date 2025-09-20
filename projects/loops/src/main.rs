@@ -3,15 +3,36 @@ fn main() {
         // println!("again!");
     // } // .v1
 
-    let mut counter = 0; // v2
+    // let mut counter = 0; // v2
 
-    let result = loop {
-        counter += 1;
+    // let result = loop {
+    //     counter += 1;
 
-        if counter == 10 {
-            break counter * 2; // this is how to return a value of a loop
+    //     if counter == 10 {
+    //         break counter * 2; // this is how to return a value of a loop
+    //     }
+    // };
+
+    // println!("The result is {result}"); // .v2
+
+
+    let mut count = 0; // v3
+    'counting_up : loop { // loop with a label, for a 'break'
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up; // escapes the outer 'loop'
+            }
+            remaining -= 1;
         }
-    };
 
-    println!("The result is {result}"); // .v2
+        count += 1;
+    }
+    println!("End count = {count}"); // .v3
 }
