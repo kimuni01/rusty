@@ -1,7 +1,7 @@
 // a program that converts fahrenheit to celsius
 // Formula: °C = (°F - 32) ÷ 1.8
 use std::io;
-// 3rd attempt, working but print! is faulty
+// 4th attempt, print! replaced with println! due to flush issue
 // getting assists from Claude Sonnet 4
 fn main() {
     let mut str1 = String::new();
@@ -17,7 +17,7 @@ fn main() {
     str1 = str1.trim().to_string(); // if not done, it is "0\n" or "1\n" for expected inputs
 
     if str1 == "0" { // I prefer () for 'if' but this time.
-        print!("Enter Fahrenheit Temperature : ");
+        println!("Enter Fahrenheit Temperature : "); // I really want to use flushing for print! v4
         let mut temp_input = String::new(); // use new variable for temperature input // v3
         io::stdin().read_line(&mut temp_input).expect("Failed to read line");
         flt1 = temp_input.trim().parse().expect("Given text was not a number"); // .v3
