@@ -1,20 +1,32 @@
 // a program that converts fahrenheit to celsius
 // Formula: °C = (°F - 32) ÷ 1.8
 use std::io;
-// 4th attempt, print! replaced with println! due to flush issue
+// 5th attempt, print! replaced with println! due to flush issue THEN using loop & if
 // getting assists from Claude Sonnet 4
 fn main() {
     let mut str1 = String::new();
 
-    println!("Fahrenheit to Celsius : 0, Celsius to Fahrenheit : 1");
 
-    io::stdin()
-        .read_line(&mut str1)
-        .expect("Failed to read line");
+    loop { // iterating until correct input is given // v5
+        println!("Fahrenheit to Celsius : 0, Celsius to Fahrenheit : 1"); // moved inside loop v5
+        str1.clear(); // clearing previous input // v5
+        io::stdin()
+            .read_line(&mut str1)
+            .expect("Failed to read line");
 
-    let mut flt1: f64; // compiler suggests the mut is not necessary, but anyways
+        // let mut flt1: f64; // compiler suggests the mut is not necessary, but anyways
     
-    str1 = str1.trim().to_string(); // if not done, it is "0\n" or "1\n" for expected inputs
+        str1 = str1.trim().to_string(); // if not done, it is "0\n" or "1\n" for expected inputs
+
+        if str1 == "0" || str1 == "1" { // v5
+            break;
+        }
+        else {
+            println!("Not a valid input");
+        } // .v5
+    }
+
+    let mut flt1: f64; // moved to here because flt1 is terminated in that loop // v5
 
     if str1 == "0" { // I prefer () for 'if' but this time.
         println!("Enter Fahrenheit Temperature : "); // I really want to use flushing for print! v4
