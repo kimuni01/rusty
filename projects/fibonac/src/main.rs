@@ -1,40 +1,62 @@
 // a program to generate 'n'th Fibonacchi sequence number
-// 2nd attempt, fixed 1st attempt with compiler errors
-// made multiple blunders to get the final v2, only error being .read_line
-// expected &mut String, found &mut u32 
+// 3rd attempt, I was having too much hard time fulfilling multiple goals at once,
+// so I asked Gemini help.
+// ideally I need to build up these by myself
+// but I resorted to more passive learning this time.
 use std::io;
 
 fn main() {
-    let mut result1 : u32 = 1; // this is for result
-    let mut input1 : u32; // detached loop // v2
+    // --- Step 1: Get and Validate User Input ---
+    println!("Generating the 'n'th Fibonacci number.");
+
+    // We will loop until we get a valid number from the user.
     loop {
-        println!("Generating 'n'th Fibonacchi Sequence number");
-        println!("Type a natural number : ");
+        println!("Please type a natural number : ");
 
+        // 1a. Create a mutable String to hold the user's input.
+        let mut input_string = String::new();
+
+        // 1b. Read the line from the user.
         io::stdin()
-            .read_line(&mut input1) // cannot use input1 in here yet // v2
-            .expect("Not a valid input"); // how am I assured this would be an integer?
+            .read_line(&mut input_string)
+            .expect("Failed to read line");
 
-    } // missed semicolon at v1 // v2
+        // 1c. Parse the String into a number (u32).
+        // .trim() removes whitespace and newlines.
+        // .parse() attempts the conversion. It returns a `Result` type.
+        let n: u32 = match input_string.trim().parse() {
+            Ok(num) => num, // If parsing is succesfull, use the number.
+            Err(_) => {
+                // If it fails (e.g., user typed "test"), print an error and restart the loop.
+                println!("Please enter a valid number!");
+                continue;
+            }
+        };
 
-    if input1 == 0 {
-        println!("Answer is 0");
-    }
-    else if input1 == 1 && input1 == 2 {
-        println!("Answer is 1");
-    }
-    else { // how do I check if input1 is a u32 variable? I want to use an else if.
-        let mut cnt1 : u32 = 2; // this is for counting iterations inside while {}
-        let mut iter1 : u32 = 1;
-        let mut iter2 : u32 = 1; // this is redundant due to result1
-        while (input1 < cnt1) {
-            // let mut iter2 = iter1; // inference shall recognize iter2 is a u32 var.
-            iter2 = iter1;
-            iter1 = result1;
-            result1 = iter2 + iter1;
-            cnt1 += 1; // Rust has no ++/--, use += // v2
+        // --- Step 2: Calculate the Fibonacci Number ---
+        if n == 0 {
+            println!("The 0th Fibonacci number is 0.");
+            break; // Exit the program
         }
-        println!("Answer is {}", result1);
+        else if n == 1 {
+            println!("The 1st Fibonacci number is 1.");
+            break; // Exit the program
+        }
+
+        // Use more descriptive variable names.
+        let mut a: u32 = 0;
+        let mut b: u32 = 1;
+        let mut counter = 2; // We start counting from the 2nd number.
+
+        // The main calculation loop.
+        while counter <= n {
+            let next_fib = a + b;
+            a = b;
+            b = next_fib;
+            counter += 1;
+        }
+
+        println!("The {}th Fibonacci number is {}.", n, b);
+        break; // Exit the program after a successful calculation.
     }
-    
 }
