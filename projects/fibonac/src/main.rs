@@ -1,62 +1,57 @@
 // a program to generate 'n'th Fibonacchi sequence number
-// 3rd attempt, I was having too much hard time fulfilling multiple goals at once,
-// so I asked Gemini help.
-// ideally I need to build up these by myself
-// but I resorted to more passive learning this time.
+// 4th attempt, I asked Gemini for something and it produced
+// improved version of the program.
+// this works just fine, except it panics for input 48 or greater.
+// 2..=n is from 2 to n for integers
 use std::io;
 
+// (Paste the  fibonacci function from above right here)
+fn fibonacci(n : u32) -> u32 {
+    // ... logic from Step 1 ...
+    if n == 0 { return 0; }
+    else if n == 1 { return 1; }
+    let mut a = 0;
+    let mut b = 1;
+    for _ in 2..=n { // 2..n is from 2 to n - 1 for integers
+        let next_fib = a + b;
+        a = b;
+        b = next_fib;
+    }
+    b
+}
+
 fn main() {
-    // --- Step 1: Get and Validate User Input ---
     println!("Generating the 'n'th Fibonacci number.");
 
-    // We will loop until we get a valid number from the user.
     loop {
-        println!("Please type a natural number : ");
-
-        // 1a. Create a mutable String to hold the user's input.
+        println!("Please type a natural number (or 'quit' to exit):");
         let mut input_string = String::new();
 
-        // 1b. Read the line from the user.
         io::stdin()
             .read_line(&mut input_string)
             .expect("Failed to read line");
 
-        // 1c. Parse the String into a number (u32).
-        // .trim() removes whitespace and newlines.
-        // .parse() attempts the conversion. It returns a `Result` type.
+        // Allow the user to quit.
+        if input_string.trim() == "quit" {
+            break;
+        }
+
+        // Parse the input into a number.
         let n: u32 = match input_string.trim().parse() {
-            Ok(num) => num, // If parsing is succesfull, use the number.
+            Ok(num) => num,
             Err(_) => {
-                // If it fails (e.g., user typed "test"), print an error and restart the loop.
-                println!("Please enter a valid number!");
-                continue;
+                println!("That's not a valid number. Please try again.");
+            continue; // Ask for input again // without continue it won't compile
             }
         };
 
-        // --- Step 2: Calculate the Fibonacci Number ---
-        if n == 0 {
-            println!("The 0th Fibonacci number is 0.");
-            break; // Exit the program
-        }
-        else if n == 1 {
-            println!("The 1st Fibonacci number is 1.");
-            break; // Exit the program
-        }
+        // --- The magic happens here! ---
+        // Call our logic function and get the result.
+        let result = fibonacci(n);
 
-        // Use more descriptive variable names.
-        let mut a: u32 = 0;
-        let mut b: u32 = 1;
-        let mut counter = 2; // We start counting from the 2nd number.
-
-        // The main calculation loop.
-        while counter <= n {
-            let next_fib = a + b;
-            a = b;
-            b = next_fib;
-            counter += 1;
-        }
-
-        println!("The {}th Fibonacci number is {}.", n, b);
-        break; // Exit the program after a successful calculation.
+        println!("The {}th Fibonacci number is {}.", n, result);
+        println!("----------------------------------------")
     }
+
+    println!("Goodbye!");
 }
