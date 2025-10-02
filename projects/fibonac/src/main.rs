@@ -1,7 +1,6 @@
 // a program to generate 'n'th Fibonacchi sequence number
-// 4th attempt, I asked Gemini for something and it produced
-// improved version of the program.
-// this works just fine, except it panics for input 48 or greater.
+// 5th attempt, probably the last version with u32. got help from Gemini
+// modified the input handling part to prevent panic for input > 47
 // 2..=n is from 2 to n for integers
 use std::io;
 
@@ -31,26 +30,31 @@ fn main() {
             .read_line(&mut input_string)
             .expect("Failed to read line");
 
-        // Allow the user to quit.
         if input_string.trim() == "quit" {
             break;
         }
 
-        // Parse the input into a number.
-        let n: u32 = match input_string.trim().parse() {
+        let n : u32 = match input_string.trim().parse() {
             Ok(num) => num,
             Err(_) => {
                 println!("That's not a valid number. Please try again.");
-            continue; // Ask for input again // without continue it won't compile
+                continue;
             }
         };
 
-        // --- The magic happens here! ---
-        // Call our logic function and get the result.
-        let result = fibonacci(n);
+        // --- NEW: Add a check to prevent overflow ---
+        // The 47th Fibonacci number is the largest that fits in a u32.
+        if n >= 48 {
+            println!("⚠️ Warning: An input of 48 or greater will cause an overflow.");
+            println!("Please enter a number between 0 and 47.");
+            println!("--------------------------------------------------");
+            continue; // Skip the calculation and ask for input again
+        }
 
+        // --- This part now only runs for valid numbers ---
+        let result = fibonacci(n);
         println!("The {}th Fibonacci number is {}.", n, result);
-        println!("----------------------------------------")
+        println!("--------------------------------------------------");
     }
 
     println!("Goodbye!");
