@@ -1,7 +1,7 @@
 // a program for printing lyrics of the song
 // "The Twelve Days of Christmas", utilizing it's repetitiveness
-// 1st attempt, the only missed part is range(?..?), in fact there
-// is no range() but only (?..?) exists.
+// 2nd attempt, under immense pressure of making it in first time,
+// I forgot adding some newlines.
 
 fn main() {
     let lyr = ["And a partridge in a pear tree.",
@@ -14,14 +14,17 @@ fn main() {
     "fifth", "sixth", "seventh", "eighth", "nineth", "tenth", "eleventh",
     "twelveth"];
     println!("The Twelve Days of Christmas\n");
-    println!("On the first day of Christmas,\n
-    My true love sent to me\n
-    A partridge in a pear tree.");
+    // I didn't know Rust println! accepts real newline(Enter Key) is literally
+    // accepted.
+    println!("On the first day of Christmas,
+My true love sent to me
+A partridge in a pear tree.\n");
     for i in (1..=11) {
         println!("On the {} day of Christmas,", lyr2[i]);
         println!("My true love sent to me");
         for j in (0..i).rev() {
             println!("{}", lyr[j]);
         }
+        println!();
     }
 }
