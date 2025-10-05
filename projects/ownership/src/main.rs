@@ -5,10 +5,13 @@ fn main() { // 's' is not yet defined, hence invalid at here. // v1
 
     let x = 5;
     let y = x;
+    println!("x = {}, y = {}", x, y); // v5 .v5
     let s1 = String::from("hello");
-    let s2 = s1; // .v3
+    // let s2 = s1; // .v3
+    let s2 = s1.clone(); // v5 .v5
 
     println!("{}, world!", s1); // useful compiler error description // v4 .v4
+    println!("s1 = {}, s2 = {}", s1, s2); // v5 .v5
 
     // do something with 's'.
 
