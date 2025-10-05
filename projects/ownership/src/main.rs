@@ -7,7 +7,9 @@ fn main() { // 's' is not yet defined, hence invalid at here. // v1
     let y = x;
     let s1 = String::from("hello");
     let s2 = s1; // .v3
-    
+
+    println!("{}, world!", s1); // useful compiler error description // v4 .v4
+
     // do something with 's'.
 
     // let mut s = String::from("hello"); // v2
