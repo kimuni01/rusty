@@ -22,10 +22,18 @@ fn main() { // v1
     // } // from here r1 is out of the scope, therefore making a new reference is possible
     // let r2 = &mut s; // .v6
 
-    let r1 = &s; // no problem // v7
+    // let r1 = &s; // no problem // v7
+    // let r2 = &s; // no problem
+    // let r3 = &mut s; // significant problem
+    // println!("{}, {} and {}", r1, r2, r3); // .v7
+
+    let r1 = &s; // no problem // v8
     let r2 = &s; // no problem
-    let r3 = &mut s; // significant problem
-    println!("{}, {} and {}", r1, r2, r3); // .v7
+    println!("{} and {}", r1, r2);
+    // since this point, variable r1 and r2 are not used.
+
+    let r3 = &mut s; // no problem
+    println!("{}", r3); // .v8
 }
 
 // fn calculate_length(s: String) -> (String, usize) {
