@@ -10,7 +10,22 @@ fn main() { // v1
     // change(&s); // .v3
 
     let mut s = String::from("hello"); // v4
-    change(&mut s); // .v4
+    change(&mut s); // .v4 // see how this does not error even in v7
+
+    // let r1 = &mut s; // v5
+    // let r2 = &mut s; // mutable reference more than one cause compiler error
+
+    // println!("{}, {}", r1, r2); // .v5
+
+    // { // v6
+    //     let r1 = &mut s;
+    // } // from here r1 is out of the scope, therefore making a new reference is possible
+    // let r2 = &mut s; // .v6
+
+    let r1 = &s; // no problem // v7
+    let r2 = &s; // no problem
+    let r3 = &mut s; // significant problem
+    println!("{}, {} and {}", r1, r2, r3); // .v7
 }
 
 // fn calculate_length(s: String) -> (String, usize) {
