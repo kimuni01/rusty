@@ -6,8 +6,11 @@ fn main() { // v1
     // let len = calculate_length(&s1); // v2
     // println!("The length of '{}' is {}.", s1, len); // .v2
 
-    let s = String::from("hello"); // v3
-    change(&s); // .v3
+    // let s = String::from("hello"); // v3
+    // change(&s); // .v3
+
+    let mut s = String::from("hello"); // v4
+    change(&mut s); // .v4
 }
 
 // fn calculate_length(s: String) -> (String, usize) {
@@ -21,6 +24,10 @@ fn main() { // v1
 // } // from here s is out of the scope. however it does not own what it refers, // .v2
 // hence original String is not dropped.
 
-fn change(some_string: &String) { // v3
-    some_string.push_str(", world"); // this cannot work, reference cannot change the value
-} // .v3
+// fn change(some_string: &String) { // v3
+//     some_string.push_str(", world"); // this cannot work, reference cannot change the value
+// } // .v3
+
+fn change(some_string: &mut String) { // v4
+    some_string.push_str(", world");
+} // .v4
