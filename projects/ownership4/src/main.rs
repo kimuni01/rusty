@@ -7,6 +7,16 @@ fn main() {
     s.clear(); // this code empties String and make ""
     // from here, word still has 5 but the String that lets 5 usable
     // does not exist. word is not valid at all now // .v4
+
+
+    let s = String::from("hello world"); // v5
+    let hello = &s[0..5];
+    let world = &s[6..11];
+
+    let len = s.len();
+    let slice = &s[0..len]; // meaning 'to start from first to the last'
+    let slice = &s[..]; // meaning the same as above // .v5
+
 }
 
 // fn dangle() -> &String { // dangle returns reference of String // v1
