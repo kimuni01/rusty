@@ -15,3 +15,15 @@ fn no_dangle() -> String { // v2
 
     s
 } // .v2
+
+fn first_word(s: &String) -> usize { // v3
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
+} // .v3
