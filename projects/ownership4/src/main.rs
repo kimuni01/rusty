@@ -43,6 +43,11 @@ fn main() {
     // hence the line below works without the slice syntax!
     let word = first_word(my_string_literal); // .v7
 
+
+    let a = [1, 2, 3, 4, 5]; // v8
+    let slice = &a[1..3];
+    assert_eq!(slice, &[2, 3]); // not explained well, this line compares expressions // .v8
+
 }
 
 // fn dangle() -> &String { // dangle returns reference of String // v1
