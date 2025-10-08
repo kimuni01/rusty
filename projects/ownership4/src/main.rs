@@ -18,10 +18,30 @@ fn main() {
     // let slice = &s[..]; // meaning the same as above // .v5
 
 
-    let mut s = String::from("hello world"); // v6
-    let word = first_word(&s); // immutable borrow occurs
-    s.clear(); // error, creates a mutable borrow
-    println!("the first word is : {}", word); // .v6
+    // let mut s = String::from("hello world"); // v6
+    // let word = first_word(&s); // immutable borrow occurs
+    // s.clear(); // error, creates a mutable borrow
+    // println!("the first word is : {}", word); // .v6
+
+    
+    let my_string = String::from("hello world"); // v7
+
+    // `first_word` works on `String`'s partial or whole sclice.
+    let word = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[..]);
+    // `first_word` also works on reference of `String` which is identical
+    // with the whole slice of `String`.
+    let word = first_word(&my_string);
+
+    let my_string_literal = "hello world";
+
+    // `first_word` works on String literal's partial or whole slice.
+    let word = first_word(&my_string_literal[0..6]);
+    let word = first_word(&my_string_literal[..]);
+
+    // a String literal is *soon* a String slice,
+    // hence the line below works without the slice syntax!
+    let word = first_word(my_string_literal); // .v7
 
 }
 
@@ -50,8 +70,9 @@ fn main() {
 //     s.len()
 // } // .v3
 
-fn first_word(s: &String) -> &str { // v6
-    let bytes = s.as_bytes();
+// fn first_word(s: &String) -> &str { // v6 .v6
+fn first_word(s: &str) -> &str { // this accepts both &String and &str // v7 .v7
+    let bytes = s.as_bytes(); // v6
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
