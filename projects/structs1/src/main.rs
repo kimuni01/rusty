@@ -21,12 +21,18 @@ fn main() {
     };
     user1.email = String::from("anotheremail@example.com"); // .v3
 
-    let user2 = User { // v5
-        active: user1.active,
-        username: user1.username,
+    // let user2 = User { // v5
+    //     active: user1.active,
+    //     username: user1.username,
+    //     email: String::from("another@example.com"),
+    //     sign_in_count: user1.sign_in_count,
+    // }; // .v5
+
+    let user2 = User { // v6
         email: String::from("another@example.com"),
-        sign_in_count: user1.sign_in_count,
-    }; // .v5
+        ..user1 // uses = operator, which moves reference type values
+    }; // .v6
+
 }
 
 fn build_user(email: String, username: String) -> User { // v3
