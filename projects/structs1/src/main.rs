@@ -20,13 +20,22 @@ fn main() {
         sign_in_count: 1,
     };
     user1.email = String::from("anotheremail@example.com"); // .v3
+
+    let user2 = User { // v5
+        active: user1.active,
+        username: user1.username,
+        email: String::from("another@example.com"),
+        sign_in_count: user1.sign_in_count,
+    }; // .v5
 }
 
 fn build_user(email: String, username: String) -> User { // v3
     User {
         active: true,
-        username: username,
-        email: email,
+        // username: username,
+        // email: email,
         sign_in_count: 1,
+        username, // v4
+        email, // .v4
     } // no semicolon for an expression
 } // .v3
