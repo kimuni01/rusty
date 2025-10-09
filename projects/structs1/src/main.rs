@@ -5,7 +5,14 @@ struct User { // v1
     sign_in_count: u64,
 } // .v1
 
+struct Color(i32, i32, i32); // v7
+struct Point(i32, i32, i32); // .v7
+
 fn main() {
+
+    let black = Color(0, 0, 0); // v7
+    let origin = Point(0, 0, 0); // .v7
+
     let user1 = User {  // v2
         sign_in_count: 1,
         active: true,
@@ -32,6 +39,7 @@ fn main() {
         email: String::from("another@example.com"),
         ..user1 // uses = operator, which moves reference type values
     }; // .v6
+
 
 }
 
